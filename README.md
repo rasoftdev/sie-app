@@ -63,8 +63,8 @@ Sigue estos pasos para instalar y configurar el proyecto en tu entorno local:
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 - [axios](https://www.npmjs.com/package/axios)
 - [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
--  [reactstrap](https://reactstrap.github.io/?path=/story/home-installation--page
-- 
+-  [reactstrap](https://reactstrap.github.io/?path=/story/home-installation--page)
+- [react-redux](https://www.npmjs.com/package/react-redux)
 ## Autores
 
 - [@rasoftdev](https://www.github.com/rasoftdev)
