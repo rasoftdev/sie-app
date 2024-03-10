@@ -1,5 +1,6 @@
-export const Cms = () => {
+const Cms = () => {
     return (
         <></>
     )
 }
+export default Cms;

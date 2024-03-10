@@ -1,5 +1,6 @@
-export const Auth = () => {
+const Auth = () => {
     return (
         <></>
     )
 }
+export default Auth;

@@ -24,5 +24,6 @@ const routes = [
         component: RecoverPassword,
         invisible: true
     }
+
 ];
 export default routes;
