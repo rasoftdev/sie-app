@@ -5,21 +5,21 @@ import RecoverPassword from "../views/Auth/RecoverPassword";
 const routes = [
     {
         path: "/",
-        icon: "",
+        name: "Login",
         layout: "/auth",
         component: Auth,
         invisible: true
     },
     {
         path: "/register",
-        icon: "",
+        name: "Register",
         layout: "/auth",
         component: Register,
         invisible: true
     },
     {
         path: "/recover-password",
-        icon: "",
+        name: "Recover Password",
         layout: "/auth",
         component: RecoverPassword,
         invisible: true
