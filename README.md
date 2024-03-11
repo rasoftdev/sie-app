@@ -59,7 +59,7 @@ Sigue estos pasos para instalar y configurar el proyecto en tu entorno local:
    ```bash
     npm run build
 ```
-##Package
+## Package
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 - [axios](https://www.npmjs.com/package/axios)
 -  [reactstrap](https://reactstrap.github.io/?path=/story/home-installation--page)
