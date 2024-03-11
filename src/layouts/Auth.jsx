@@ -25,14 +25,14 @@ const Auth = () => {
         <>
             <Container fluid>
                 <Row>
-                    <Col lg="6" md="6" sm="12">
+                    <Col lg="6" md="6" sm="12" className="">
                         <LoadingProvider>
                             <Routes>
                                 {getRoutes(routes)}
                             </Routes>
                         </LoadingProvider>
                     </Col>
-                    <Col lg="6" md="6" sm="12">
+                    <Col lg="6" md="6" sm="12" className="d-none d-lg-flex ">
                         Content
                     </Col>
                 </Row>
