@@ -1,6 +1,10 @@
-import { createStore } from 'redux';
-import RootReducer from '../reducers/RootReducer';
+import create from 'zustand';
 
-const Store = createStore(RootReducer);
+const AppStore = create(set => ({
+  token: null,
+  user: null,
+  setToken: (token) => set(state => ({ ...state, token })),
+  setUser: (user) => set(state => ({ ...state, user })),
+}));
 
-export default Store;
+export default AppStore;

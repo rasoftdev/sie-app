@@ -1,10 +1,12 @@
 import React, { createContext, useState } from "react";
 import AuthService from "../services/AuthService";
+import AppStore from "../store/store";
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
+    const { setToken, setUser } = AppStore();
     const handleAuth = async (data) => {
         try {
             await AuthService.auth(data.username, data.password);
