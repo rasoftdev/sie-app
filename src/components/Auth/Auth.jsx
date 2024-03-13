@@ -45,7 +45,7 @@ const Auth = ({
                         Bienvenido
                     </h1>
                     <h2>
-                        Inicia sesión continuar.
+                        Inicia sesión para continuar
                     </h2>
                 </div>
                 <Form>
