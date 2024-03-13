@@ -1,6 +1,7 @@
 import Auth from "../views/Auth/Auth";
 import Register from "../views/Auth/Register";
 import RecoverPassword from "../views/Auth/RecoverPassword";
+import Admin from "../views/Cms/Admin/Index";
 
 const routes = [
     {
@@ -23,7 +24,15 @@ const routes = [
         layout: "/auth",
         component: RecoverPassword,
         invisible: true
+    },
+    {
+        path: "/cms",
+        name: "CMS",
+        layout: "/cms",
+        component: Admin,
+        invisible: true
     }
+
 
 ];
 export default routes;

@@ -1,15 +1,23 @@
 import React, { createContext, useState } from "react";
-import AuthService from "../services/AuthService";
-import AppStore from "../store/store";
+import AuthService from "../services/AuthService.js";
+import useSieStore from "../store/Store.js";
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
-    const { setToken, setUser } = AppStore();
-    const handleAuth = async (data) => {
+    const { setToken, setUser } = useSieStore();
+    const handleAuth = async (payload) => {
         try {
-            await AuthService.auth(data.username, data.password);
+            const data = await AuthService.auth(payload.email, payload.password);
+            const { status, access_token } = data;
+            if (status) {
+                setToken(access_token);
+                setTimeout(async () => {
+                    const user = await AuthService.getCurrentUser();
+                    setUser(user);
+                }, 500);
+            }
         } catch (error) {
             console.log(error);
         } finally {

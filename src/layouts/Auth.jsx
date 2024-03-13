@@ -1,43 +1,51 @@
-import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import routes from "../routes/index.js";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "reactstrap"
+import useSieStore from "../store/Store.js";
 import { LoadingProvider } from "../context/LoadingContext.js";
+import { AuthProvider } from "../context/AuthContext.js";
 
 const Auth = () => {
+    const navigate = useNavigate();
+    const isLoggedIn = useSieStore(state => state.isLoggedIn);
+
+    useEffect(() => {
+        if (isLoggedIn()) {
+            navigate('/cms');
+        }
+    }, [isLoggedIn, navigate, location.pathname]);
     const getRoutes = (routes) => {
         return routes.map((prop, key) => {
             if (prop.layout === "/auth") {
-                return (
-                    <Route
-                        path={`${prop.path}`}
-                        element={<prop.component/>}
-                        key={key}
-                    />
-                );
+                return (<Route
+                    path={`${prop.path}`}
+                    element={<prop.component/>}
+                    key={key}
+                />);
             } else {
                 return null;
             }
         });
     };
-    console.log(getRoutes(routes));
-    return (
-        <>
-            <Container fluid>
-                <Row>
-                    <Col lg="5" md="5" sm="12" className="d-flex align-items-center p-sm-5 p-4">
-                        <LoadingProvider>
+    return (<>
+        <Container fluid className="auth-container p-0 m-0">
+            <Row className="p-0 m-0 h-100">
+                <Col lg="5" md="12" sm="12" className="d-flex align-items-center p-sm-5 p-4">
+                    <LoadingProvider>
+                        <AuthProvider>
                             <Routes>
                                 {getRoutes(routes)}
                             </Routes>
-                        </LoadingProvider>
-                    </Col>
-                    <Col lg="7" md="7" className="d-none d-lg-flex p-0">
-                        Content
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    )
+                        </AuthProvider>
+                    </LoadingProvider>
+                </Col>
+                <Col lg="7" md="7" className="d-none d-lg-flex p-0">
+                    <div className="bg-section">
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    </>)
 }
 export default Auth;

@@ -1,21 +1,29 @@
-import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import routes from "../routes/index.js";
 import { LoadingProvider } from "../context/LoadingContext.js";
+import useSieStore from "../store/Store.js";
 
-const Auth = () => {
+const Cms = () => {
+    const navigate = useNavigate();
+    const isLoggedIn = useSieStore(state => state.isLoggedIn);
+
+    useEffect(() => {
+        if (!isLoggedIn()) {
+            navigate('/auth');
+        }
+    }, [isLoggedIn, navigate]);
     const getRoutes = (routes) => {
         return routes.map((prop, key) => {
-            if (prop.collapse) {
-                return getRoutes(prop.views);
-            }
-            return (
-                <Route
-                    path={prop.path}
+            if (prop.layout === "/cms") {
+                return (<Route
+                    path={`${prop.path}`}
                     element={<prop.component/>}
                     key={key}
-                />
-            );
+                />);
+            } else {
+                return null;
+            }
         });
     };
     return (
@@ -31,4 +39,4 @@ const Auth = () => {
         </>
     )
 }
-export default Auth;
+export default Cms;

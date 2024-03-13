@@ -1,18 +1,22 @@
 import axios from 'axios';
+import helpHttp from '../helpers/helpHttp';
 
-const { VITE_APP_API_URL } = import.meta.env;
-const API_AUTH = `${VITE_APP_API_URL}/login`;
-const API_REGISTER = `${VITE_APP_API_URL}/register`;
-const API_LOGOUT = `${VITE_APP_API_URL}/logout`;
-const API_REFRESH_TOKEN = `${VITE_APP_API_URL}/refresh`;
-const API_CURRENT_USER = `${VITE_APP_API_URL}/me`;
+const { VITE_APP_API_SIE_URL } = import.meta.env;
+const API_AUTH = `${VITE_APP_API_SIE_URL}/login`;
+const API_REGISTER = `${VITE_APP_API_SIE_URL}/register`;
+const API_LOGOUT = `${VITE_APP_API_SIE_URL}/logout`;
+const API_REFRESH_TOKEN = `${VITE_APP_API_SIE_URL}/refresh`;
+const API_CURRENT_USER = `${VITE_APP_API_SIE_URL}/me`;
+
+const api = helpHttp();
 
 class AuthService {
-    async auth(username, password) {
+    async auth(email, password) {
         try {
-            const { status, token } = await axios.post(API_AUTH, { username, password });
+            const { data } = await axios.post(API_AUTH, { email, password });
+            const { status, access_token } = data;
             if (status) {
-                return { status, token };
+                return { status, access_token };
             } else {
                 return null;
             }
@@ -29,7 +33,7 @@ class AuthService {
 
     async logout() {
         try {
-            const { status } = await axios.get(API_LOGOUT);
+            const { status } = await api.get(API_LOGOUT);
             return status;
         } catch (error) {
             console.log(error);
@@ -40,7 +44,7 @@ class AuthService {
     async refreshToken() {
 
         try {
-            const { status, access_token } = await axios.get(API_REFRESH_TOKEN);
+            const { status, access_token } = await api.get(API_REFRESH_TOKEN);
             if (status) {
                 return { status, access_token };
             } else {
@@ -54,9 +58,9 @@ class AuthService {
 
     async getCurrentUser() {
         try {
-            const { status, user } = await axios.get(API_CURRENT_USER);
+            const { data, status } = await api.get(API_CURRENT_USER);
             if (status) {
-                return user;
+                return data;
             } else {
                 return null;
             }
