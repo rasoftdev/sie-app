@@ -86,8 +86,10 @@ const Auth = ({
                         </div>
                     </FormGroup>
                     <div className="footer-form">
-                        <Button className="w-75" type="submit">
-                            Entrar
+                        <Button className="w-75"
+                                type="submit"
+                                disabled={isLoadingSave}>
+                            {isLoadingSave ? (<i className="fa fa-spinner fa-spin"></i>) : 'Entrar'}
                         </Button>
                     </div>
                 </Form>
