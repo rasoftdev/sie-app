@@ -40,15 +40,9 @@ const Auth = ({
     return (
         <>
             <div className="auth" onSubmit={onSubmit}>
-                <img src="./images/sie-logo.webp" alt="SIE"/>
-                <div>
-                    <h1>
-                        Bienvenido
-                    </h1>
-                    <h2>
-                        Inicia sesión para continuar
-                    </h2>
-                </div>
+                <h2>
+                    Inicia sesión para continuar
+                </h2>
                 <Form>
                     <FormGroup floating className="mb-3">
                         <Input
@@ -101,7 +95,7 @@ const Auth = ({
                 </Form>
                 <div className="register">
                     <Link to="/auth/register">
-                    ¡REGISTRATE!
+                        ¡REGISTRATE!
                     </Link>
                 </div>
             </div>
