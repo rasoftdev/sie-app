@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import AuthComponent from "../../components/Auth/Auth.jsx";
 import { useForm } from "../../hooks/useForm.js";
 import AuthContext from "../../context/AuthContext.js";
+import { Toaster } from 'react-hot-toast';
+
 
 const initialForm = {
     email: "dev@ricardoalvarez.com.co",
@@ -27,7 +29,9 @@ const Auth = () => {
         form, setForm, errors, setErrors, handleSubmit
     } = useForm(initialForm, validationsForm);
     const {
-        handleAuth
+        success,
+        setSuccess,
+        handleAuth,
     } = useContext(AuthContext);
     const handleSave = async (e) => {
         setLoadingSave(true);
@@ -37,12 +41,19 @@ const Auth = () => {
             return;
         }
         await handleAuth(form);
-        setErrors({});
-        setForm(initialForm);
-        navigate('/cms');
+        if (success) {
+            setSuccess(false);
+            setErrors({});
+            setForm(initialForm);
+            navigate('/cms');
+        } else {
+            setLoadingSave(false);
+        }
+
     }
     return (<>
         <div className="content-form-auth">
+            <Toaster/>
             <AuthComponent
                 data={form}
                 setData={setForm}
