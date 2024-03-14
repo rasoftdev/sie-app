@@ -34,7 +34,7 @@ const Auth = () => {
                 <Col lg="5" md="12" sm="12"
                      className="d-flex align-items-center justify-content-center flex-column p-sm-5 p-4">
                     <div className="header">
-                        <img src="./images/sie-logo.webp" alt="SIE"/>
+                        <img src="../images/sie-logo.webp" alt="SIE"/>
                         <div>
                             <h1>
                                 Bienvenido
