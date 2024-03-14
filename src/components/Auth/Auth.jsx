@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     Form,
     FormGroup,
@@ -85,6 +86,11 @@ const Auth = ({
                             {errors.password}
                         </div>
                     </FormGroup>
+                    <div className="forgot-password">
+                        <Link to="/auth/forgot-password">
+                            ¿Olvidaste tu contraseña?
+                        </Link>
+                    </div>
                     <div className="footer-form">
                         <Button className="w-75"
                                 type="submit"
@@ -93,6 +99,11 @@ const Auth = ({
                         </Button>
                     </div>
                 </Form>
+                <div className="register">
+                    <Link to="/auth/register">
+                    ¡REGISTRATE!
+                    </Link>
+                </div>
             </div>
         </>
     )
