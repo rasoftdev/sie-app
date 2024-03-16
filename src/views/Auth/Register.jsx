@@ -7,10 +7,45 @@ import { Toaster } from 'react-hot-toast';
 
 
 const initialForm = {
-    firt_name: '',
+    first_name: '',
     last_name: '',
+    document_type: '',
+    document_number: '',
+    document_issuance: '',
+    document_issuance_date: '',
+    rh: '',
+    gender: '',
+    address: '',
+    neighborhood: '',
+    main_phone: '',
+    stratum: '',
+    sisben: '',
+    country: '',
+    state: '',
+    city: '',
+    location_type: '',
+    email: '',
 }
-const requiredFields = [];
+const requiredFields = [
+    'first_name',
+    'last_name',
+    'document_type',
+    'document_number',
+    'document_issuance',
+    'document_issuance_date',
+    'rh',
+    'gender',
+    'address',
+    'neighborhood',
+    'main_phone',
+    'stratum',
+    'sisben',
+    'country',
+    'state',
+    'city',
+    'location_type',
+    'email',
+];
 const validationsForm = (form) => {
     const errors = {};
     for (const key in form) {
@@ -38,7 +73,6 @@ const Register = () => {
             setSuccess(false);
             setErrors({});
             setForm(initialForm);
-            navigate('/auth');
         } else {
             setLoadingSave(false);
         }

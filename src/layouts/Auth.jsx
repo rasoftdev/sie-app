@@ -30,9 +30,9 @@ const Auth = () => {
     };
     return (<>
         <Container fluid className="auth-container p-0 m-0">
-            <Row className="p-0 m-0 h-100">
-                <Col lg="5" md="12" sm="12"
-                     className="d-flex align-items-center justify-content-center flex-column p-sm-5 p-4">
+            <Row className="section p-0 m-0 h-100">
+                <Col lg="6" md="12" sm="12"
+                     className="d-flex align-items-center justify-content-center flex-column p-5">
                     <div className="header">
                         <img src="../images/sie-logo.webp" alt="SIE"/>
                         <div>
@@ -49,7 +49,7 @@ const Auth = () => {
                         </AuthProvider>
                     </LoadingProvider>
                 </Col>
-                <Col lg="7" md="7" className="d-none d-lg-flex p-0">
+                <Col lg="6" md="6" className="d-none d-lg-flex p-0">
                     <div className="bg-section">
                     </div>
                 </Col>

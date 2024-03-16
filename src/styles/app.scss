@@ -2,3 +2,21 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'fonts.scss';
 @import "auth/auth.scss";
+
+.select {
+  .invalid-feedback {
+    display: block;
+  }
+
+  .h-select {
+    .css-13cymwt-control, .css-t3ipsp-control {
+      height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    }
+
+    &.error {
+      div {
+        border-color: red !important;
+      }
+    }
+  }
+}
