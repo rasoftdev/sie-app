@@ -379,12 +379,16 @@ const Register = ({
                                 </div>
                             </FormGroup>
                         </Col>
-                        <Col md={6} className="mb-3">
+                        <Col md={6} className="mb-3 radio">
                             <Label>Zona</Label>
                             <FormGroup check>
                                 <Input type="radio"
                                        id="location_type_1"
                                        name="location_type"
+                                       invalid={errors && errors.location_type !== "" && errors.location_type !== undefined}
+                                       value="Casco urbano"
+                                       onChange={handleChange}
+                                       onBlur={handleBlur}
                                 />
                                 <Label check>
                                     Casco urbano
@@ -394,11 +398,20 @@ const Register = ({
                                 <Input type="radio"
                                        id="location_type_2"
                                        name="location_type"
+                                       invalid={errors && errors.location_type !== "" && errors.location_type !== undefined}
+                                       value="Rural"
+                                       onChange={handleChange}
+                                       onBlur={handleBlur}
                                 />
                                 <Label check>
                                     Rural
                                 </Label>
                             </FormGroup>
+                            {errors && errors.location_type && (
+                                <div className="invalid-feedback">
+                                    {errors.location_type}
+                                </div>
+                            )}
                         </Col>
                         <Col md={12} className="mt-5 mb-5">
                             <hr/>
