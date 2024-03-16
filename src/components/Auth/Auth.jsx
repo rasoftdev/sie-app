@@ -16,7 +16,6 @@ const Auth = ({
                   setErrors,
                   initialForm,
                   validationsForm,
-                  requiredFields,
                   isLoadingSave
               }) => {
     const [validInit, setValidInit] = useState(false);
@@ -36,7 +35,7 @@ const Auth = ({
     const handleBlur = (e) => {
         handleChange(e);
         if (validInit) {
-            setErrors(validationsForm(data, requiredFields));
+            setErrors(validationsForm(data));
         }
     };
 
@@ -106,6 +105,8 @@ const Auth = ({
                     </div>
                 </Form>
                 <div className="register">
+                    <hr/>
+                    ¿Quieres matricular tu hija o hijo?
                     <Link to="/auth/register">
                         ¡REGISTRATE!
                     </Link>
