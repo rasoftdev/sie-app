@@ -66,8 +66,8 @@ const ResetPassword = ({
                              style={{
                                  position: 'absolute',
                                  cursor: 'pointer',
-                                 right: '1.2rem',
-                                 top: '35%',
+                                 right: '2rem',
+                                 top: '1rem',
                              }}>
                             {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
                         </div>
@@ -93,8 +93,8 @@ const ResetPassword = ({
                              style={{
                                  position: 'absolute',
                                  cursor: 'pointer',
-                                 right: '1.2rem',
-                                 top: '35%',
+                                 right: '2rem',
+                                 top: '1rem',
                              }}>
                             {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
                         </div>

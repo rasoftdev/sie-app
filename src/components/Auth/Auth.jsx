@@ -16,6 +16,7 @@ const Auth = ({
                   setErrors,
                   initialForm,
                   validationsForm,
+                  requiredFields,
                   isLoadingSave
               }) => {
     const [validInit, setValidInit] = useState(false);
@@ -35,7 +36,7 @@ const Auth = ({
     const handleBlur = (e) => {
         handleChange(e);
         if (validInit) {
-            setErrors(validationsForm(data));
+            setErrors(validationsForm(data, requiredFields));
         }
     };
 
@@ -85,8 +86,8 @@ const Auth = ({
                              style={{
                                  position: 'absolute',
                                  cursor: 'pointer',
-                                 right: '1.2rem',
-                                 top: '35%',
+                                 right: '2rem',
+                                 top: '1rem',
                              }}>
                             {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
                         </div>

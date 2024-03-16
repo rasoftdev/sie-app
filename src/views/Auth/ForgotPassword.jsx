@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import ForgotPasswordComponent from "../../components/Auth/ForgotPassword.jsx";
+import { useNavigate } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm.js";
 import AuthContext from "../../context/AuthContext.js";
 import { Toaster } from 'react-hot-toast';
@@ -14,13 +15,14 @@ const validationsForm = (form) => {
     for (const key in form) {
         const displayName = key.replace(/_/g, ' ');
         if (requiredFields.includes(key) && !form[key]) {
-            errors[key] = `${displayName.charAt(0).toUpperCase() + displayName.slice(1)} es requerido`;
+            errors[key] = `Campo es requerido`;
         }
     }
 
     return errors;
 };
 const ForgotPassword = () => {
+    const navigate = useNavigate();
     const [isLoadingSave, setLoadingSave] = useState(false);
     const {
         form, setForm, errors, setErrors, handleSubmit
@@ -36,6 +38,9 @@ const ForgotPassword = () => {
             setSuccess(false);
             setErrors({});
             setForm(initialForm);
+            setTimeout(() => {
+                navigate('/auth');
+            }, 800);
         } else {
             setLoadingSave(false);
         }

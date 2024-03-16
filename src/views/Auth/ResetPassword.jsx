@@ -18,13 +18,12 @@ const validationsForm = (form) => {
     for (const key in form) {
         const displayName = key.replace(/_/g, ' ');
         if (requiredFields.includes(key) && !form[key]) {
-            errors[key] = `${displayName.charAt(0).toUpperCase() + displayName.slice(1)} es requerido`;
+            errors[key] = `Campo es requerido`;
         }
     }
     if (form.password !== form.password_confirmation) {
         errors.password_confirmation = 'Las contraseñas no coinciden';
     }
-
     return errors;
 };
 const ResetPassword = () => {
@@ -57,6 +56,9 @@ const ResetPassword = () => {
             setSuccess(false);
             setErrors({});
             setForm(initialForm);
+            setTimeout(() => {
+                navigate('/auth');
+            }, 800);
         } else {
             setLoadingSave(false);
         }

@@ -15,11 +15,10 @@ const validationsForm = (form) => {
     const errors = {};
     for (const key in form) {
         const displayName = key.replace(/_/g, ' ');
-        if (requiredFields.includes(key) && !form[key]) {
-            errors[key] = `${displayName.charAt(0).toUpperCase() + displayName.slice(1)} es requerido`;
-        }
+        if (requiredFields.includes(key) && !form[key])
+            errors[key] = `Campo es requerido`;
+        // errors[key] = `${displayName.charAt(0).toUpperCase() + displayName.slice(1)} es requerido`;
     }
-
     return errors;
 };
 const Auth = () => {

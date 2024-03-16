@@ -9,15 +9,16 @@ import {
 } from "reactstrap";
 
 const ForgotPassword = ({
-                  data,
-                  setData,
-                  onSubmit,
-                  errors,
-                  setErrors,
-                  initialForm,
-                  validationsForm,
-                  isLoadingSave
-              }) => {
+                            data,
+                            setData,
+                            onSubmit,
+                            errors,
+                            setErrors,
+                            initialForm,
+                            validationsForm,
+                            requiredFields,
+                            isLoadingSave
+                        }) => {
     const [validInit, setValidInit] = useState(false);
     const handleChange = (e) => {
         const { name, value, checked } = e.target;
@@ -33,7 +34,7 @@ const ForgotPassword = ({
     const handleBlur = (e) => {
         handleChange(e);
         if (validInit) {
-            setErrors(validationsForm(data));
+            setErrors(validationsForm(data, requiredFields));
         }
     };
 
