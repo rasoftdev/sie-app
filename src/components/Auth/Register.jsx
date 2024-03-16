@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Select from 'react-select';
 import {
     Form,
     FormGroup,
@@ -9,6 +8,8 @@ import {
     Row,
     Col,
 } from "reactstrap";
+import Select from 'react-select';
+
 
 
 const Register = ({
@@ -166,7 +167,7 @@ const Register = ({
                                     name="document_issuance_date"
                                     value={data.document_issuance_date}
                                     placeholder="Fecha expedición documento"
-                                    type="text"
+                                    type="date"
                                     invalid={errors && errors.document_issuance_date !== "" && errors.document_issuance_date !== undefined}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -176,6 +177,103 @@ const Register = ({
                                 </Label>
                                 <div className="invalid-feedback">
                                     {errors.document_issuance_date}
+                                </div>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                            <FormGroup className="select">
+                                <Select
+                                    className={errors && errors.rh !== "" && errors.rh !== undefined ? "h-select error" : "h-select"}
+                                    options={[]}
+                                    name="rh"
+                                    id="rh"
+                                    placeholder="Tipo de sangre"
+                                    value={data.rh}
+                                    onChange={handleSelect}
+                                    onBlur={handleBlur}
+                                />
+                                {errors && errors.rh && (
+                                    <div className="invalid-feedback">
+                                        {errors.rh}
+                                    </div>
+                                )}
+                            </FormGroup>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                            <FormGroup floating>
+                                <Input
+                                    id="eps"
+                                    name="eps"
+                                    value={data.eps}
+                                    placeholder="EPS"
+                                    type="text"
+                                    invalid={errors && errors.eps !== "" && errors.eps !== undefined}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                <Label for="eps">
+                                    EPS
+                                </Label>
+                                <div className="invalid-feedback">
+                                    {errors.eps}
+                                </div>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                            <FormGroup className="select">
+                                <Select
+                                    className={errors && errors.stratum !== "" && errors.stratum !== undefined ? "h-select error" : "h-select"}
+                                    options={[]}
+                                    name="stratum"
+                                    id="stratum"
+                                    placeholder="Estrato"
+                                    value={data.stratum}
+                                    onChange={handleSelect}
+                                    onBlur={handleBlur}
+                                />
+                                {errors && errors.rh && (
+                                    <div className="invalid-feedback">
+                                        {errors.stratum}
+                                    </div>
+                                )}
+                            </FormGroup>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                            <FormGroup className="select">
+                                <Select
+                                    className={errors && errors.gender !== "" && errors.gender !== undefined ? "h-select error" : "h-select"}
+                                    options={[]}
+                                    name="gender"
+                                    id="gender"
+                                    placeholder="Genero"
+                                    value={data.gender}
+                                    onChange={handleSelect}
+                                    onBlur={handleBlur}
+                                />
+                                {errors && errors.gender && (
+                                    <div className="invalid-feedback">
+                                        {errors.gender}
+                                    </div>
+                                )}
+                            </FormGroup>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                            <FormGroup floating>
+                                <Input
+                                    id="birthday"
+                                    name="birthday"
+                                    value={data.birthday}
+                                    placeholder="Fecha de nacimiento"
+                                    type="date"
+                                    invalid={errors && errors.birthday !== "" && errors.birthday !== undefined}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                <Label for="birthday">
+                                   Fecha de nacimiento
+                                </Label>
+                                <div className="invalid-feedback">
+                                    {errors.birthday}
                                 </div>
                             </FormGroup>
                         </Col>
@@ -312,13 +410,13 @@ const Register = ({
                                     name="email"
                                     value={data.email}
                                     placeholder="Correo electrónico"
-                                    type="text"
+                                    type="email"
                                     invalid={errors && errors.email !== "" && errors.email !== undefined}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
                                 <Label for="email">
-                                  Correo electrónico
+                                    Correo electrónico
                                 </Label>
                                 <div className="invalid-feedback">
                                     {errors.email}
@@ -338,7 +436,7 @@ const Register = ({
                                     onBlur={handleBlur}
                                 />
                                 <Label for="main_phone">
-                                  Teléfono
+                                    Teléfono
                                 </Label>
                                 <div className="invalid-feedback">
                                     {errors.main_phone}

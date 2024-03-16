@@ -19,12 +19,12 @@ const initialForm = {
     neighborhood: '',
     main_phone: '',
     stratum: '',
-    sisben: '',
     country: '',
     state: '',
     city: '',
     location_type: '',
     email: '',
+    birthday: '',
 }
 const requiredFields = [
     'first_name',
@@ -39,7 +39,6 @@ const requiredFields = [
     'neighborhood',
     'main_phone',
     'stratum',
-    'sisben',
     'country',
     'state',
     'city',
