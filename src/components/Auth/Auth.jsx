@@ -106,7 +106,7 @@ const Auth = ({
                 </Form>
                 <div className="register">
                     <hr/>
-                    ¿Quieres matricular tu hija o hijo?
+                    ¿Quieres  obtener un cupo o matricular tu hijo/a?
                     <Link to="/auth/register">
                         ¡REGISTRATE!
                     </Link>

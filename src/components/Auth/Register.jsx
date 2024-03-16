@@ -9,15 +9,15 @@ import {
 } from "reactstrap";
 
 const Register = ({
-                  data,
-                  setData,
-                  onSubmit,
-                  errors,
-                  setErrors,
-                  initialForm,
-                  validationsForm,
-                  isLoadingSave
-              }) => {
+                      data,
+                      setData,
+                      onSubmit,
+                      errors,
+                      setErrors,
+                      initialForm,
+                      validationsForm,
+                      isLoadingSave
+                  }) => {
     const [validInit, setValidInit] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
@@ -43,7 +43,7 @@ const Register = ({
         <>
             <div className="auth" onSubmit={onSubmit}>
                 <h2>
-                    Inicia sesión para continuar
+                    Solicitar un cupo o matricular a su hijo/a, ingrese sus datos
                 </h2>
                 <Form>
                     <FormGroup floating className="mb-3">

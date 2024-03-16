@@ -7,8 +7,8 @@ import { Toaster } from 'react-hot-toast';
 
 
 const initialForm = {
-    email: "",
-    password: ""
+    firt_name: '',
+    last_name: '',
 }
 const requiredFields = [];
 const validationsForm = (form) => {
