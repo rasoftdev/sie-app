@@ -19,6 +19,8 @@ const Auth = ({
                   isLoadingSave
               }) => {
     const [validInit, setValidInit] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleChange = (e) => {
         const { name, value, checked } = e.target;
         const datatype = e.target.getAttribute("data-type");
@@ -68,7 +70,7 @@ const Auth = ({
                             name="password"
                             value={data.password}
                             placeholder="Contraseña"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             invalid={errors && errors.password !== "" && errors.password !== undefined}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -78,6 +80,15 @@ const Auth = ({
                         </Label>
                         <div className="invalid-feedback">
                             {errors.password}
+                        </div>
+                        <div onClick={() => setShowPassword(!showPassword)}
+                             style={{
+                                 position: 'absolute',
+                                 cursor: 'pointer',
+                                 right: '1.2rem',
+                                 top: '35%',
+                             }}>
+                            {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
                         </div>
                     </FormGroup>
                     <div className="forgot-password">

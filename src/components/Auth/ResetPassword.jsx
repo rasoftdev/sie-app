@@ -19,6 +19,7 @@ const ResetPassword = ({
                            isLoadingSave
                        }) => {
     const [validInit, setValidInit] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const handleChange = (e) => {
         const { name, value, checked } = e.target;
         const datatype = e.target.getAttribute("data-type");
@@ -50,7 +51,7 @@ const ResetPassword = ({
                             name="password"
                             value={data.password}
                             placeholder="Contraseña"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             invalid={errors && errors.password !== "" && errors.password !== undefined}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -61,6 +62,15 @@ const ResetPassword = ({
                         <div className="invalid-feedback">
                             {errors.password}
                         </div>
+                        <div onClick={() => setShowPassword(!showPassword)}
+                             style={{
+                                 position: 'absolute',
+                                 cursor: 'pointer',
+                                 right: '1.2rem',
+                                 top: '35%',
+                             }}>
+                            {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
+                        </div>
                     </FormGroup>
                     <FormGroup floating className="mb-3">
                         <Input
@@ -68,7 +78,7 @@ const ResetPassword = ({
                             name="password_confirmation"
                             value={data.password_confirmation}
                             placeholder=" Confirmar contraseña"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             invalid={errors && errors.password_confirmation !== "" && errors.password_confirmation !== undefined}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -78,6 +88,15 @@ const ResetPassword = ({
                         </Label>
                         <div className="invalid-feedback">
                             {errors.password_confirmation}
+                        </div>
+                        <div onClick={() => setShowPassword(!showPassword)}
+                             style={{
+                                 position: 'absolute',
+                                 cursor: 'pointer',
+                                 right: '1.2rem',
+                                 top: '35%',
+                             }}>
+                            {showPassword ? (<i className="fa fa-eye-slash"></i>) : (<i className="fa fa-eye"></i>)}
                         </div>
                     </FormGroup>
                     <div className="footer-form">
