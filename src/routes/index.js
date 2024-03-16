@@ -1,7 +1,8 @@
 import Auth from "../views/Auth/Auth";
 import Register from "../views/Auth/Register";
-import RecoverPassword from "../views/Auth/RecoverPassword";
+import ResetPassword from "../views/Auth/ResetPassword.jsx";
 import Admin from "../views/Cms/Admin/Index";
+import ForgotPassword from "../views/Auth/ForgotPassword.jsx";
 
 const routes = [
     {
@@ -19,10 +20,17 @@ const routes = [
         invisible: true
     },
     {
-        path: "/recover-password",
-        name: "Recover Password",
+        path: "/forgot-password",
+        name: "Forgot Password",
         layout: "/auth",
-        component: RecoverPassword,
+        component: ForgotPassword,
+        invisible: true
+    },
+    {
+        path: "/reset-password",
+        name: "Reset Password",
+        layout: "/auth",
+        component: ResetPassword,
         invisible: true
     },
     {

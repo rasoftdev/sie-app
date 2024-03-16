@@ -47,8 +47,51 @@ const AuthProvider = ({ children }) => {
     const handleRegister = () => {
         console.log("Register");
     }
-    const handleRecoverPassword = () => {
-        console.log("RecoverPassword");
+    const handleForgotPassword = async (payload) => {
+        try {
+            const data = await AuthService.forgotPassword(payload.email);
+            if (data !== null) {
+                const { status } = data;
+                if (status) {
+                    setSuccess(true);
+                    successAlert('Se envió un correo con las instrucciones para restablecer la contraseña');
+                } else {
+                    setSuccess(false);
+                    warningAlert('Usuario no encontrado en el sistema');
+                }
+            } else {
+                setSuccess(false);
+                warningAlert('Usuario no encontrado en el sistema');
+            }
+        } catch (error) {
+            console.log(error);
+            errorAlert('Hubo un error intente mas tarde');
+        } finally {
+            setLoading(false);
+        }
+    }
+    const handleResetPassword = async (payload) => {
+        try {
+            const data = await AuthService.resetPassword(payload);
+            if (data !== null) {
+                const { status } = data;
+                if (status) {
+                    setSuccess(true);
+                    successAlert('Contraseña restablecida correctamente');
+                } else {
+                    setSuccess(false);
+                    warningAlert('Usuario no encontrado en el sistema');
+                }
+            } else {
+                setSuccess(false);
+                warningAlert('Usuario no encontrado en el sistema');
+            }
+        } catch (error) {
+            console.log(error);
+            errorAlert('Hubo un error intente mas tarde');
+        } finally {
+            setLoading(false);
+        }
     }
     const handleRefreshToken = () => {
         try {
@@ -61,7 +104,8 @@ const AuthProvider = ({ children }) => {
         handleAuth,
         handleLogout,
         handleRegister,
-        handleRecoverPassword,
+        handleForgotPassword,
+        handleResetPassword,
         handleRefreshToken,
         loading,
         success,

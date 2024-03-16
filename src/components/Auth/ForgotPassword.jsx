@@ -8,7 +8,7 @@ import {
     Button
 } from "reactstrap";
 
-const Auth = ({
+const ForgotPassword = ({
                   data,
                   setData,
                   onSubmit,
@@ -41,7 +41,7 @@ const Auth = ({
         <>
             <div className="auth" onSubmit={onSubmit}>
                 <h2>
-                    Inicia sesión para continuar
+                    Creemos una nueva contraseña
                 </h2>
                 <Form>
                     <FormGroup floating className="mb-3">
@@ -62,44 +62,21 @@ const Auth = ({
                             {errors.email}
                         </div>
                     </FormGroup>
-                    <FormGroup floating className="mb-3">
-                        <Input
-                            id="password"
-                            name="password"
-                            value={data.password}
-                            placeholder="Contraseña"
-                            type="password"
-                            invalid={errors && errors.password !== "" && errors.password !== undefined}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        <Label for="password">
-                            Contraseña
-                        </Label>
-                        <div className="invalid-feedback">
-                            {errors.password}
-                        </div>
-                    </FormGroup>
-                    <div className="forgot-password">
-                        <Link to="/auth/forgot-password">
-                            ¿Olvidaste tu contraseña?
-                        </Link>
-                    </div>
                     <div className="footer-form">
                         <Button className="w-75"
                                 type="submit"
                                 disabled={isLoadingSave}>
-                            {isLoadingSave ? (<i className="fa fa-spinner fa-spin"></i>) : 'Entrar'}
+                            {isLoadingSave ? (<i className="fa fa-spinner fa-spin"></i>) : 'Recuperar contraseña'}
                         </Button>
                     </div>
                 </Form>
                 <div className="register">
-                    <Link to="/auth/register">
-                        ¡REGISTRATE!
+                    <Link to="/auth/">
+                        INICIAR SESIÓN
                     </Link>
                 </div>
             </div>
         </>
     )
 }
-export default Auth;
+export default ForgotPassword;

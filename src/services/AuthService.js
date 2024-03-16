@@ -7,6 +7,8 @@ const API_REGISTER = `${VITE_APP_API_SIE_URL}/register`;
 const API_LOGOUT = `${VITE_APP_API_SIE_URL}/logout`;
 const API_REFRESH_TOKEN = `${VITE_APP_API_SIE_URL}/refresh`;
 const API_CURRENT_USER = `${VITE_APP_API_SIE_URL}/me`;
+const API_FORGOT_PASSWORD = `${VITE_APP_API_SIE_URL}/forgot-password`;
+const API_RESET_PASSWORD = `${VITE_APP_API_SIE_URL}/reset-password`;
 
 const api = helpHttp();
 
@@ -61,6 +63,36 @@ class AuthService {
             const { data, status } = await api.get(API_CURRENT_USER);
             if (status) {
                 return data;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
+
+    async forgotPassword(email) {
+        try {
+            const { data } = await axios.post(API_FORGOT_PASSWORD, { email });
+            const { status } = data;
+            if (status) {
+                return { status };
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
+
+    async resetPassword(payload) {
+        try {
+            const { data } = await axios.post(API_RESET_PASSWORD, { ...payload });
+            const { status } = data;
+            if (status) {
+                return { status };
             } else {
                 return null;
             }

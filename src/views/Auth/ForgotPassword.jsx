@@ -1,16 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router";
-import AuthComponent from "../../components/Auth/Auth.jsx";
+import ForgotPasswordComponent from "../../components/Auth/ForgotPassword.jsx";
 import { useForm } from "../../hooks/useForm.js";
 import AuthContext from "../../context/AuthContext.js";
 import { Toaster } from 'react-hot-toast';
 
 
 const initialForm = {
-    email: "dev@ricardoalvarez.com.co",
-    password: "12345678"
+    email: "",
 }
-const requiredFields = ["email", "password"];
+const requiredFields = ["email"];
 const validationsForm = (form) => {
     const errors = {};
     for (const key in form) {
@@ -22,16 +20,15 @@ const validationsForm = (form) => {
 
     return errors;
 };
-const Auth = () => {
+const ForgotPassword = () => {
     const [isLoadingSave, setLoadingSave] = useState(false);
-    const navigate = useNavigate();
     const {
         form, setForm, errors, setErrors, handleSubmit
     } = useForm(initialForm, validationsForm);
     const {
         success,
         setSuccess,
-        handleAuth,
+        handleForgotPassword,
     } = useContext(AuthContext);
 
     useEffect(() => {
@@ -39,7 +36,6 @@ const Auth = () => {
             setSuccess(false);
             setErrors({});
             setForm(initialForm);
-            navigate('/cms');
         } else {
             setLoadingSave(false);
         }
@@ -51,13 +47,12 @@ const Auth = () => {
             setLoadingSave(false);
             return;
         }
-        await handleAuth(form);
-
+        await handleForgotPassword(form);
     }
     return (<>
         <div className="content-form-auth">
             <Toaster/>
-            <AuthComponent
+            <ForgotPasswordComponent
                 data={form}
                 setData={setForm}
                 onSubmit={handleSave}
@@ -70,4 +65,4 @@ const Auth = () => {
         </div>
     </>)
 }
-export default Auth;
+export default ForgotPassword;

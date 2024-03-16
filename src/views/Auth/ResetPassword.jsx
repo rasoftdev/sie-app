@@ -1,16 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router";
-import AuthComponent from "../../components/Auth/Auth.jsx";
+import { useLocation, useNavigate } from 'react-router-dom';
+import ResetPasswordComponent from "../../components/Auth/ResetPassword.jsx";
 import { useForm } from "../../hooks/useForm.js";
 import AuthContext from "../../context/AuthContext.js";
 import { Toaster } from 'react-hot-toast';
 
 
 const initialForm = {
-    email: "dev@ricardoalvarez.com.co",
-    password: "12345678"
+    password: "",
+    password_confirmation: "",
+    token: "",
+    email: ""
 }
-const requiredFields = ["email", "password"];
+const requiredFields = ["password", "password_confirmation"];
 const validationsForm = (form) => {
     const errors = {};
     for (const key in form) {
@@ -19,27 +21,43 @@ const validationsForm = (form) => {
             errors[key] = `${displayName.charAt(0).toUpperCase() + displayName.slice(1)} es requerido`;
         }
     }
+    if (form.password !== form.password_confirmation) {
+        errors.password_confirmation = 'Las contraseñas no coinciden';
+    }
 
     return errors;
 };
-const Auth = () => {
-    const [isLoadingSave, setLoadingSave] = useState(false);
+const ResetPassword = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const query = new URLSearchParams(location.search);
+    const token = query.get('token');
+    const email = query.get('email');
+    const [isLoadingSave, setLoadingSave] = useState(false);
     const {
         form, setForm, errors, setErrors, handleSubmit
     } = useForm(initialForm, validationsForm);
     const {
         success,
         setSuccess,
-        handleAuth,
+        handleResetPassword,
     } = useContext(AuthContext);
+
+    useEffect(() => {
+        initialForm.token = token;
+        initialForm.email = atob(email);
+        setForm(initialForm);
+        if (!token) {
+            navigate('/auth');
+            return null;
+        }
+    }, []);
 
     useEffect(() => {
         if (success) {
             setSuccess(false);
             setErrors({});
             setForm(initialForm);
-            navigate('/cms');
         } else {
             setLoadingSave(false);
         }
@@ -51,13 +69,12 @@ const Auth = () => {
             setLoadingSave(false);
             return;
         }
-        await handleAuth(form);
-
+        await handleResetPassword(form);
     }
     return (<>
         <div className="content-form-auth">
             <Toaster/>
-            <AuthComponent
+            <ResetPasswordComponent
                 data={form}
                 setData={setForm}
                 onSubmit={handleSave}
@@ -70,4 +87,4 @@ const Auth = () => {
         </div>
     </>)
 }
-export default Auth;
+export default ResetPassword;
