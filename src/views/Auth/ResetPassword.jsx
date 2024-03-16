@@ -49,7 +49,6 @@ const ResetPassword = () => {
         setForm(initialForm);
         if (!token) {
             navigate('/auth');
-            return null;
         }
     }, []);
 
