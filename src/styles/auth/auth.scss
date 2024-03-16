@@ -14,6 +14,10 @@
     justify-content: center;
     gap: 23px;
 
+    img {
+      width: 100%;
+    }
+
     h1 {
       color: #313131;
       text-align: center;
@@ -39,6 +43,30 @@
 
       &.register {
         width: 100%;
+
+        form {
+          padding: 50px;
+          border: 1px solid #2D3648;
+          border-radius: 6px;
+
+          h2 {
+            color: #313131;
+            text-align: left;
+            font-size: 35px !important;
+            font-family: Poppins Bold, sans-serif;
+            font-weight: 700;
+            line-height: 130%;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+          }
+
+          hr {
+            width: 200px;
+            margin: auto;
+            border: 1px solid #000;
+            opacity: 0.5;
+          }
+        }
       }
 
       h2 {

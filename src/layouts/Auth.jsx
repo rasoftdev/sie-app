@@ -32,7 +32,7 @@ const Auth = () => {
         <Container fluid className="auth-container p-0 m-0">
             <Row className="section p-0 m-0 h-100">
                 <Col lg="6" md="12" sm="12"
-                     className="d-flex align-items-center justify-content-center flex-column p-5">
+                     className="d-flex align-items-center justify-content-center flex-column p-lg-5 p-md-5 p-4">
                     <div className="header">
                         <img src="../images/sie-logo.webp" alt="SIE"/>
                         <div>

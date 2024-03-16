@@ -11,7 +11,6 @@ import {
 import Select from 'react-select';
 
 
-
 const Register = ({
                       data,
                       setData,
@@ -270,14 +269,15 @@ const Register = ({
                                     onBlur={handleBlur}
                                 />
                                 <Label for="birthday">
-                                   Fecha de nacimiento
+                                    Fecha de nacimiento
                                 </Label>
                                 <div className="invalid-feedback">
                                     {errors.birthday}
                                 </div>
                             </FormGroup>
                         </Col>
-                        <Col md={12}>
+                        <Col md={12} className="mt-5 mb-5">
+                            <hr/>
                         </Col>
                         <Col md={12}>
                             <h2>UBICACIÓN</h2>
@@ -399,6 +399,9 @@ const Register = ({
                                     Rural
                                 </Label>
                             </FormGroup>
+                        </Col>
+                        <Col md={12} className="mt-5 mb-5">
+                            <hr/>
                         </Col>
                         <Col md={12}>
                             <h2>CONTACTOS</h2>
